@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_library_member_form" model="ir.ui.view">
+        <field name="name">res.partner.library.member.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='misc']" position="after">
+                <group string="Información de Biblioteca" name="library_info">
+                    <field name="is_library_member"/>
+                    <field name="member_code" invisible="not is_library_member"/>
+                    <field name="membership_date" invisible="not is_library_member"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_library_member" model="ir.actions.act_window">
+        <field name="name">Socios</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('is_library_member', '=', True)]</field>
+        <field name="context">{'default_is_library_member': True}</field>
+    </record>
+
+    <menuitem id="menu_library_member" 
+              name="Socios" 
+              parent="library_management.menu_library_main" 
+              action="action_library_member" 
+              sequence="30"/>
+</odoo>

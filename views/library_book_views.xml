@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_library_root" 
+              name="Biblioteca" 
+              sequence="10"/>
+
+    <menuitem id="menu_library_main" 
+              name="Gestión" 
+              parent="menu_library_root" 
+              sequence="10"/>
+
+    <record id="action_library_book" model="ir.actions.act_window">
+        <field name="name">Libros</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+<menuitem id="menu_library_book" 
+          name="Libros" 
+          parent="library_management.menu_library_main" 
+          action="action_library_book" 
+          sequence="10"/>
+          
+    <record id="view_library_book_form" model="ir.ui.view">
+        <field name="name">library.book.form</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="author"/>
+                        <field name="isbn"/>
+                        <field name="publication_date"/>
+                        <field name="years_since_publication"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_library_book_list" model="ir.ui.view">
+        <field name="name">library.book.list</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="author"/>
+                <field name="isbn"/>
+                <field name="publication_date"/>
+                <field name="years_since_publication"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_library_book_search" model="ir.ui.view">
+        <field name="name">library.book.search</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="author"/>
+                <field name="isbn"/>
+                <filter name="available" string="Disponibles" domain="[('state','=','available')]"/>
+                <filter name="loaned" string="No disponibles" domain="[('state','=','loaned')]"/>
+                <separator/>
+                <filter name="group_author" string="Agrupar por Autor" context="{'group_by': 'author'}"/>
+                <filter name="group_year" string="Agrupar por Año" context="{'group_by': 'publication_date:year'}"/>
+            </search>
+        </field>
+    </record>
+</odoo>

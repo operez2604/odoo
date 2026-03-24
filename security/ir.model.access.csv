@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_book_librarian,book.librarian,model_library_book,group_library_librarian,1,1,1,1
+access_member_librarian,member.librarian,base.model_res_partner,group_library_librarian,1,1,1,1
+access_loan_librarian,loan.librarian,model_library_loan,group_library_librarian,1,1,1,1
+access_pos_order_librarian,pos.order.librarian,model_pos_order,group_library_librarian,1,1,1,0

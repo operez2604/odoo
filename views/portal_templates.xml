@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_loans" name="Mis Préstamos">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Mis Préstamos</t>
+            </t>
+            <div class="container mt-4">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Libro</th>
+                            <th>Fecha de Préstamo</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="loans" t-as="loan">
+                            <tr>
+                                <td><t t-esc="loan.book_id.name"/></td>
+                                <td><t t-esc="loan.loan_date"/></td>
+                                <td><t t-esc="loan.state"/></td>
+                                <td>
+                                    <a t-if="loan.state == 'active'"
+                                       t-attf-href="/my/loans/#{loan.id}/renew"
+                                       class="btn btn-sm btn-primary">
+                                        Renovar
+                                    </a>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+</odoo>
