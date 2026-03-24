@@ -33,6 +33,7 @@ Usa este comando para inicializar el módulo y cargar los cambios de Python y XM
 python odoo-bin -r operez -w 75136560 --addons-path=addons,custom_addons -d bdticom -u library_management --stop-after-init
 
 Funcionalidades Core:
+
 👤 Gestión Avanzada de Socios
 Heredado de res.partner: Mantiene la compatibilidad con el ecosistema Odoo.
 Identificación Automática: Generación de member_code (ej. LIB-0001) mediante secuencias nativas.
