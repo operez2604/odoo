@@ -15,26 +15,30 @@ Dependencias de Odoo: base, account, point_of_sale, website
 1. Preparación del Código (Bash)
 # Clonar Odoo 19
    git clone https://github.com/odoo/odoo.git -b 19.0 --depth 1
+  
    cd odoo
 # Crear y activar entorno virtual
   py -3.12 -m venv venv312
+  
   .\venv312\Scripts\activate  # Windows
-2. Instalación de Dependencias (Bash)
+# Instalación de Dependencias (Bash)
   pip install -r requirements.txt
-3. Configuración de Base de Datos
+# Configuración de Base de Datos
 Asegúrate de tener una instancia de PostgreSQL corriendo y crea la base de datos:
   Bashcreatedb -U postgres bdticom
-4. Estructura de Carpetas
+# Estructura de Carpetas
 El módulo debe residir en la carpeta de complementos personalizados:
+
 Plaintextodoo/
 └── custom_addons/
     └── library_management/
+    
 5. Ejecución y Actualización Forzada
 Usa este comando para inicializar el módulo y cargar los cambios de Python y XML de forma limpia:
 (Bash)
 python odoo-bin -r operez -w 75136560 --addons-path=addons,custom_addons -d bdticom -u library_management --stop-after-init
 
-Funcionalidades Core:
+# Funcionalidades Core:
 
 👤 Gestión Avanzada de Socios
 Heredado de res.partner: Mantiene la compatibilidad con el ecosistema Odoo.
