@@ -1,8 +1,10 @@
 📚 Library Management - Odoo 19
+
 Módulo integral de gestión bibliotecaria diseñado para Odoo 19 Community Edition.
 Esta solución transforma el estándar de contactos de Odoo en un sistema de socios con control de préstamos, catálogo automatizado y servicios web.
 
 🛠️ Requisitos del Sistema
+
 Lenguaje: Python 3.12
 Base de datos: PostgreSQL 14+
 Plataforma: Odoo 19.0 CE
